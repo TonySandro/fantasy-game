@@ -9,7 +9,7 @@ const makeSut = () => {
 };
 
 describe("Organization Controller", () => {
-  test("Should return 400 if no name is provided", () => {
+  test("Should return 400 if no name is provided", async () => {
     const { sut } = makeSut();
 
     const httpRequest = {
@@ -20,7 +20,7 @@ describe("Organization Controller", () => {
       },
     };
 
-    const httpResponse = sut.handle(httpRequest);
+    const httpResponse = await sut.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
   });
 });
