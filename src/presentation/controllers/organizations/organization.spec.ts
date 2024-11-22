@@ -57,4 +57,20 @@ describe("Organization Controller", () => {
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body).toEqual(new MissingParamError("age"));
   });
+
+  test("Should return 400 if no nationality is provided", async () => {
+    const { sut } = makeSut();
+
+    const httpRequest = {
+      body: {
+        name: "any_name",
+        nick: "player_nick",
+        age: 16,
+      },
+    };
+
+    const httpResponse = await sut.handle(httpRequest);
+    expect(httpResponse.statusCode).toBe(400);
+    expect(httpResponse.body).toEqual(new MissingParamError("nationality"));
+  });
 });
