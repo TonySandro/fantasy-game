@@ -1,3 +1,4 @@
+import { MissingParamError } from "../../errors/missing-param-error";
 import { OrganizationController } from "./organization";
 
 const makeSut = () => {
@@ -22,7 +23,7 @@ describe("Organization Controller", () => {
 
     const httpResponse = await sut.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
-    expect(httpResponse.body).toEqual(new Error("Missing param: name"));
+    expect(httpResponse.body).toEqual(new MissingParamError("name"));
   });
 
   test("Should return 400 if no nick is provided", async () => {
@@ -38,6 +39,6 @@ describe("Organization Controller", () => {
 
     const httpResponse = await sut.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
-    expect(httpResponse.body).toEqual(new Error("Missing param: nick"));
+    expect(httpResponse.body).toEqual(new MissingParamError("nick"));
   });
 });

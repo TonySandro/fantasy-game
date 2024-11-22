@@ -1,3 +1,5 @@
+import { MissingParamError } from "../../errors/missing-param-error";
+import { badRequest } from "../../helpers/http/http-helper";
 import { Controller, HttpRequest, HttpResponse } from "../../protocols";
 
 export class OrganizationController implements Controller {
@@ -6,10 +8,7 @@ export class OrganizationController implements Controller {
 
     for (const field of requiredFields) {
       if (!httpRequest.body[field]) {
-        return {
-          statusCode: 400,
-          body: new Error(`Missing param: ${field}`),
-        };
+        return badRequest(new MissingParamError(field));
       }
     }
   }
