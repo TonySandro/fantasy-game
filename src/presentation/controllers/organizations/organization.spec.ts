@@ -85,4 +85,23 @@ describe("Organization Controller", () => {
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body).toEqual(new MissingParamError("nationality"));
   });
+
+  test("Should return 400 if no orgName is provided", async () => {
+    const { sut } = makeSut();
+
+    const httpRequest = {
+      body: {
+        members: {
+          name: "any_name",
+          nick: "player_nick",
+          age: 16,
+          nationality: "any_nationality",
+        },
+      },
+    };
+
+    const httpResponse = await sut.handle(httpRequest);
+    expect(httpResponse.statusCode).toBe(400);
+    expect(httpResponse.body).toEqual(new MissingParamError("orgName"));
+  });
 });

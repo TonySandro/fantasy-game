@@ -4,6 +4,10 @@ import { Controller, HttpRequest, HttpResponse } from "../../protocols";
 
 export class OrganizationController implements Controller {
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
+    if (!httpRequest.body.orgName) {
+      return badRequest(new MissingParamError("orgName"));
+    }
+
     const requiredFields = ["name", "nick", "age", "nationality"];
 
     for (const field of requiredFields) {
