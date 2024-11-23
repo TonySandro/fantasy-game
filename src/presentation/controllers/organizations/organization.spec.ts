@@ -15,9 +15,12 @@ describe("Organization Controller", () => {
 
     const httpRequest = {
       body: {
-        nick: "player_nick",
-        age: 16,
-        nationality: "any_nationality",
+        orgName: "any_orgName",
+        members: {
+          nick: "player_nick",
+          age: 16,
+          nationality: "any_nationality",
+        },
       },
     };
 
@@ -31,9 +34,12 @@ describe("Organization Controller", () => {
 
     const httpRequest = {
       body: {
-        name: "any_name",
-        age: 16,
-        nationality: "any_nationality",
+        orgName: "any_orgName",
+        members: {
+          name: "any_name",
+          age: 16,
+          nationality: "any_nationality",
+        },
       },
     };
 
@@ -47,9 +53,12 @@ describe("Organization Controller", () => {
 
     const httpRequest = {
       body: {
-        name: "any_name",
-        nick: "player_nick",
-        nationality: "any_nationality",
+        orgName: "any_orgName",
+        members: {
+          name: "any_name",
+          nick: "player_nick",
+          nationality: "any_nationality",
+        },
       },
     };
 
@@ -63,9 +72,12 @@ describe("Organization Controller", () => {
 
     const httpRequest = {
       body: {
-        name: "any_name",
-        nick: "player_nick",
-        age: 16,
+        orgName: "any_orgName",
+        members: {
+          name: "any_name",
+          nick: "player_nick",
+          age: 16,
+        },
       },
     };
 
