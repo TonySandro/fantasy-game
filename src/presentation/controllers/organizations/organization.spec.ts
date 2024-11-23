@@ -6,23 +6,27 @@ import { OrganizationController } from "./organization";
 const makeFakeRequest = (): HttpRequest => ({
   body: {
     orgName: "any_orgName",
-    members: {
-      name: "any_name",
-      nick: "player_nick",
-      age: 16,
-      nationality: "any_nationality",
-    },
+    members: [
+      {
+        name: "any_name",
+        nick: "player_nick",
+        age: 16,
+        nationality: "any_nationality",
+      },
+    ],
   },
 });
 
 const makeFakeResponse = () => ({
   orgName: "any_orgName",
-  members: {
-    name: "any_name",
-    nick: "player_nick",
-    age: 16,
-    nationality: "any_nationality",
-  },
+  members: [
+    {
+      name: "any_name",
+      nick: "player_nick",
+      age: 16,
+      nationality: "any_nationality",
+    },
+  ],
 });
 
 const makeSut = () => {
@@ -40,11 +44,13 @@ describe("Organization Controller", () => {
     const httpRequest = {
       body: {
         orgName: "any_orgName",
-        members: {
-          nick: "player_nick",
-          age: 16,
-          nationality: "any_nationality",
-        },
+        members: [
+          {
+            nick: "player_nick",
+            age: 16,
+            nationality: "any_nationality",
+          },
+        ],
       },
     };
 
@@ -59,11 +65,13 @@ describe("Organization Controller", () => {
     const httpRequest = {
       body: {
         orgName: "any_orgName",
-        members: {
-          name: "any_name",
-          age: 16,
-          nationality: "any_nationality",
-        },
+        members: [
+          {
+            name: "any_name",
+            age: 16,
+            nationality: "any_nationality",
+          },
+        ],
       },
     };
 
@@ -78,11 +86,13 @@ describe("Organization Controller", () => {
     const httpRequest = {
       body: {
         orgName: "any_orgName",
-        members: {
-          name: "any_name",
-          nick: "player_nick",
-          nationality: "any_nationality",
-        },
+        members: [
+          {
+            name: "any_name",
+            nick: "player_nick",
+            nationality: "any_nationality",
+          },
+        ],
       },
     };
 
@@ -97,11 +107,13 @@ describe("Organization Controller", () => {
     const httpRequest = {
       body: {
         orgName: "any_orgName",
-        members: {
-          name: "any_name",
-          nick: "player_nick",
-          age: 16,
-        },
+        members: [
+          {
+            name: "any_name",
+            nick: "player_nick",
+            age: 16,
+          },
+        ],
       },
     };
 
@@ -115,12 +127,14 @@ describe("Organization Controller", () => {
 
     const httpRequest = {
       body: {
-        members: {
-          name: "any_name",
-          nick: "player_nick",
-          age: 16,
-          nationality: "any_nationality",
-        },
+        members: [
+          {
+            name: "any_name",
+            nick: "player_nick",
+            age: 16,
+            nationality: "any_nationality",
+          },
+        ],
       },
     };
 

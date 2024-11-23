@@ -9,10 +9,13 @@ export class OrganizationController implements Controller {
     }
 
     const requiredFields = ["name", "nick", "age", "nationality"];
+    const orgMembers = httpRequest.body.members;
 
-    for (const field of requiredFields) {
-      if (!httpRequest.body.members[field]) {
-        return badRequest(new MissingParamError(field));
+    for (let index = 0; index < orgMembers.length; index++) {
+      for (const field of requiredFields) {
+        if (!orgMembers[index][field]) {
+          return badRequest(new MissingParamError(field));
+        }
       }
     }
 
