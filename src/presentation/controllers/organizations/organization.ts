@@ -1,5 +1,5 @@
 import { MissingParamError } from "../../errors/missing-param-error";
-import { badRequest } from "../../helpers/http/http-helper";
+import { badRequest, success } from "../../helpers/http/http-helper";
 import { Controller, HttpRequest, HttpResponse } from "../../protocols";
 
 export class OrganizationController implements Controller {
@@ -15,5 +15,7 @@ export class OrganizationController implements Controller {
         return badRequest(new MissingParamError(field));
       }
     }
+
+    return success(httpRequest.body);
   }
 }

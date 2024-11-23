@@ -1,5 +1,29 @@
 import { MissingParamError } from "../../errors/missing-param-error";
+import { success } from "../../helpers/http/http-helper";
+import { HttpRequest } from "../../protocols";
 import { OrganizationController } from "./organization";
+
+const makeFakeRequest = (): HttpRequest => ({
+  body: {
+    orgName: "any_orgName",
+    members: {
+      name: "any_name",
+      nick: "player_nick",
+      age: 16,
+      nationality: "any_nationality",
+    },
+  },
+});
+
+const makeFakeResponse = () => ({
+  orgName: "any_orgName",
+  members: {
+    name: "any_name",
+    nick: "player_nick",
+    age: 16,
+    nationality: "any_nationality",
+  },
+});
 
 const makeSut = () => {
   const sut = new OrganizationController();
@@ -103,5 +127,12 @@ describe("Organization Controller", () => {
     const httpResponse = await sut.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body).toEqual(new MissingParamError("orgName"));
+  });
+
+  test("Should return 200 if valid data is provided", async () => {
+    const { sut } = makeSut();
+    const httpResponse = await sut.handle(makeFakeRequest());
+
+    expect(httpResponse).toEqual(success(makeFakeResponse()));
   });
 });
