@@ -4,7 +4,7 @@ import { Controller, HttpRequest, HttpResponse } from "../../protocols";
 
 export class ChampionshipController implements Controller {
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
-    const requiredFields = ["championshipName"];
+    const requiredFields = ["championshipName", "award"];
 
     for (const field of requiredFields) {
       if (!httpRequest.body[field]) {

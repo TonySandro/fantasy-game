@@ -33,6 +33,20 @@ describe("Championship Controller", () => {
     );
   });
 
+  test("Should return 400 if no award is provided", async () => {
+    const sut = makeSut();
+
+    const httpRequest = {
+      body: {
+        championshipName: "any_name",
+      },
+    };
+
+    const httpResponse = await sut.handle(httpRequest);
+    expect(httpResponse.statusCode).toBe(400);
+    expect(httpResponse.body).toEqual(new MissingParamError("award"));
+  });
+
   test("Should return 200 if valid data is provided", async () => {
     const sut = makeSut();
     const httpResponse = await sut.handle(makeFakeRequest());
