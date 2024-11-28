@@ -17,18 +17,6 @@ const makeFakeRequest = (): HttpRequest => ({
   },
 });
 
-const makeFakeResponse = () => ({
-  orgName: "any_orgName",
-  members: [
-    {
-      name: "any_name",
-      nick: "player_nick",
-      age: 16,
-      nationality: "any_nationality",
-    },
-  ],
-});
-
 const makeSut = () => {
   const sut = new OrganizationController();
 
@@ -147,6 +135,6 @@ describe("Organization Controller", () => {
     const { sut } = makeSut();
     const httpResponse = await sut.handle(makeFakeRequest());
 
-    expect(httpResponse).toEqual(success(makeFakeResponse()));
+    expect(httpResponse).toEqual(success(makeFakeRequest().body));
   });
 });
